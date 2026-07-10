@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+    <title>For You ❤️</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=Montserrat:wght@200;300;400&family=Alex+Brush&display=swap" rel="stylesheet">
+
+    <style>
+        /* Modern Design Reset & Variable Systems */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fbf5f5 0%, #f3e1e4 50%, #e8cbd0 100%);
+            --primary-love: #b33951;
+            --secondary-love: #e28f9e;
+            --dark-charcoal: #2c2224;
+            --glass-base: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow-lux: 0 20px 40px rgba(179, 57, 81, 0.08);
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-charcoal);
+            overflow-x: hidden;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ambient Floating Particles Background */
+        .heart-particle {
+            position: fixed;
+            color: var(--secondary-love);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp 12s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0.5) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        /* LUXURY INTRO SECTION */
+        #intro-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 40px;
+            z-index: 2;
+            background: radial-gradient(circle, rgba(251,245,245,0.2) 0%, rgba(243,225,228,0.4) 100%);
+        }
+
+        .intro-container {
+            max-width: 700px;
+            animation: fadeInDown 1.8s var(--transition-smooth);
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--primary-love);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .intro-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .click-btn {
+            background: transparent;
+            color: var(--primary-love);
+            border: 1px solid var(--primary-love);
+            padding: 16px 45px;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .click-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--primary-love);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .click-btn:hover {
+            color: #ffffff;
+            box-shadow: 0 15px 30px rgba(179, 57, 81, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .click-btn:hover::before {
+            width: 100%;
+        }
+
+        /* ENDLESS EDITORIAL SCRAPBOOK */
+        #scrapbook-section {
+            display: none;
+            max-width: 1000px;
+            margin: auto;
+            padding: 100px 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .scrapbook-header {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--glass-base);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            margin-bottom: 120px;
+            box-shadow: var(--shadow-lux);
+            animation: fadeInUp 1.5s var(--transition-smooth);
+        }
+
+        .scrapbook-header h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 5rem;
+            color: var(--primary-love);
+            margin-bottom: 25px;
+        }
+
+        .scrapbook-header p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--dark-charcoal);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Infinite Asymmetric Layout Grid */
+        .scrapbook-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 140px; /* Expansive space between love notes */
+        }
+
+        /* Themed Rows alternating left/right layout */
+        .story-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .story-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 768px) {
+            .story-row, .story-row:nth-child(even) {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        /* Editorial Image & Text Modules */
+        .card-visual {
+            flex: 1;
+            max-width: 440px;
+            position: relative;
+        }
+
+        .polaroid {
+            background: #ffffff;
+            padding: 18px 18px 50px 18px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: sepia(10%) contrast(95%);
+            transition: var(--transition-smooth);
+        }
+
+        .polaroid:hover img {
+            filter: sepia(0%) contrast(100%);
+        }
+
+        .card-text {
+            flex: 1;
+            padding: 40px;
+            background: var(--glass-base);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lux);
+            transition: var(--transition-smooth);
+        }
+
+        .card-text:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--primary-love);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(179, 57, 81, 0.15);
+            padding-bottom: 10px;
+        }
+
+        .card-text p {
+            font-size: 0.95rem;
+            color: #443739;
+            margin-bottom: 15px;
+        }
+
+        .card-text p.poetry-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--primary-love);
+            border-left: 2px solid var(--secondary-love);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .heart-icon {
+            display: inline-block;
+            color: var(--primary-love);
+            font-size: 1.2rem;
+            margin-top: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Grand Extended Infinite Prose Section */
+        .prose-interlude {
+            background: transparent;
+            text-align: center;
+            padding: 80px 20px;
+            margin: 60px auto;
+            max-width: 750px;
+        }
+
+        .prose-interlude h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--primary-love);
+            margin-bottom: 30px;
+        }
+
+        .prose-interlude p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--dark-charcoal);
+            margin-bottom: 25px;
+            letter-spacing: 0.8px;
+        }
+
+        /* LUXURY FOOTER */
+        .scrapbook-footer {
+            margin-top: 160px;
+            text-align: center;
+            padding: 80px 40px;
+            background: var(--glass-base);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .scrapbook-footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+
+        .scrapbook-footer h3 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-love);
+            font-weight: 400;
+        }
+
+        /* Rotations for organic scrapbook alignment */
+        .rotate-left { transform: rotate(-1.5deg); }
+        .rotate-right { transform: rotate(2deg); }
+        .polaroid:hover { transform: scale(1.02) rotate(0deg); box-shadow: 0 40px 80px rgba(179,57,81,0.12); }
+
+        /* Animation Keyframes */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="particle-container"></div>
+
+<section id="intro-section">
+    <div class="intro-container">
+        <h1 class="intro-title">Finally, you came…</h1>
+        <h2 class="intro-subtitle">I’ve written a universe for you.</h2>
+        <button class="click-btn" id="revealBtn">Enter My Heart</button>
+    </div>
+</section>
+
+<main id="scrapbook-section">
+
+    <header class="scrapbook-header">
+        <h1>To the one who owns my thoughts</h1>
+        <p>
+            If love had a shape, it would look like you. If peace had a voice, it would sound like you. 
+            And if my heart had a home… it would be forever found within you.
+        </p>
+    </header>
+
+    <div class="scrapbook-grid">
+
+        <div class="story-row">
+            <div class="card-visual">
+                <div class="polaroid rotate-left">
+                    <img src="xBTtJNl%20-%20Imgur.jpg" alt="Memory One">
+                </div>
+            </div>
+            <div class="card-text">
+                <h3>The Moment You Exist</h3>
+                <p>Every time I see you, the world feels softer. Like everything loud inside me finally calms down. You are not just beautiful — you are the definition of comfort in human form.</p>
+                <p class="poetry-line">"In a room full of art, my eyes would still only look for you."</p>
+                <p>I find myself tracing your smile in my memory when you're gone, realizing how effortlessly you have re-written the landscape of my life.</p>
+                <span class="heart-icon">♥</span>
+            </div>
+        </div>
+
+        <div class="story-row">
+            <div class="card-visual">
+                <div class="polaroid rotate-right">
+                    <img src="AbmCfZ2%20-%20Imgur.jpg" alt="Memory Two">
+                </div>
+            </div>
+            <div class="card-text">
+                <h3>Your Silent Magic</h3>
+                <p>You don’t even realize it, but your presence changes everything. The way you exist is like poetry that doesn’t need words. I find myself memorizing your details without even trying.</p>
+                <p>The gentle inflection of your voice, the warmth that radiates when you walk into a room—it's a quiet sorcery that grounds me completely.</p>
+                <p class="poetry-line">"You are my favorite coincidence in a world full of noise."</p>
+                <span class="heart-icon">♥</span>
+            </div>
+        </div>
+
+        <div class="prose-interlude">
+            <h2>The Symphony of Us</h2>
+            <p>Sometimes, I stop and think about how vast the universe is. Billions of years, countless constellations, and an infinite stretch of time. Yet, somehow, my timeline aligned perfectly with yours. I got to exist at the exact same time as you, walk the same earth, and share the same air.</p>
+            <p>That is not luck. That is a quiet miracle. Loving you feels less like an choice and more like a profound remembering—as if my heart knew yours long before we ever met.</p>
+            <span class="heart-icon" style="font-size:2rem;">♡</span>
+        </div>
+
+        <div class="story-row">
+            <div class="card-visual">
+                <div class="polaroid rotate-left">
+                    <img src="GHKaV5z%20-%20Imgur.png" alt="Memory Three">
+                </div>
+            </div>
+            <div class="card-text">
+                <h3>My Favorite Thought</h3>
+                <p>Even on my worst days, thinking about you feels like light breaking through dark clouds. You became my calm without even asking to. And somehow… I never want to go back to who I was before you.</p>
+                <p class="poetry-line">"You are the peace I look for in a chaotic world."</p>
+                <p>You didn't fix me, because I wasn't broken. Instead, you illuminated the corners of my soul that I forgot how to love, showing me how beautiful life could be when shared.</p>
+                <span class="heart-icon">♥</span>
+            </div>
+        </div>
+
+        <div class="story-row">
+            <div class="card-visual">
+                <div class="polaroid rotate-right">
+                    <img src="e8Ww4Dx%20-%20Imgur.png" alt="Memory Four">
+                </div>
+            </div>
+            <div class="card-text">
+                <h3>If Forever Exists</h3>
+                <p>I don’t know what the future holds, but I know that if forever had a direction, it would always find its way back to you and me. Through every turning season, your name is the one written in my heart.</p>
+                <p>Time has a way of moving too fast when I am with you, and too slow when we are apart. I want to build worlds with you.</p>
+                <p class="poetry-line">"With you, forever doesn't feel long enough."</p>
+                <span class="heart-icon">♥</span>
+            </div>
+        </div>
+
+        <div class="prose-interlude">
+            <h2>The Architecture of My Heart</h2>
+            <p>If I could give you one thing in life, I would give you the ability to see yourself through my eyes. Only then would you realize how completely irreplaceable you are. You look at your flaws; I look at them as the strokes of a masterpiece.</p>
+            <p>I love the way you think, the way you feel things so deeply, and the effortless grace you carry even when life gets heavy. You are a sanctuary. Every word written here is just a tiny fragment of a feeling that stretches beyond the margins of this screen.</p>
+        </div>
+
+        <div class="story-row">
+            <div class="card-text" style="max-width: 100%; flex: none;">
+                <h3>A Promise Stamped in Time</h3>
+                <p>I love you not only for who you are, but for who I am when I am with you. You make me want to reach higher, love deeper, and live more intentionally. This love isn't just a collection of sweet words; it is an anchor. It is a decision I make happily every single morning when I wake up, and every single evening before I close my eyes.</p>
+                <p class="poetry-line">"You are my today, my tomorrow, and all of my remaining passings of time."</p>
+                <p>No matter where the wind takes us, or what stories life decides to write for us, please always remember this: you are valued, you are fiercely protected, and you are loved beyond measure.</p>
+                <span class="heart-icon">♥</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="scrapbook-footer">
+        <p>
+            I don’t promise absolute perfection. I don’t promise easy days without storm. 
+            But I promise absolute presence — always staying, always fighting, always choosing you in every single version of life.
+        </p>
+        <h3>
+            you are my favorite place in this world<br>
+            <span style="font-family:'Montserrat'; font-size:0.9rem; text-transform:uppercase; letter-spacing:3px; display:block; margin-top:15px; opacity:0.7;">— orxnge</span>
+        </h3>
+    </footer>
+
+</main>
+
+<script>
+// Smooth reveal trigger
+document.getElementById('revealBtn').addEventListener('click', function() {
+    document.getElementById('intro-section').style.display = 'none';
+    document.getElementById('scrapbook-section').style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Premium Visuals: Generate floating background hearts gracefully
+function createHeartParticles() {
+    const container = document.getElementById('particle-container');
+    const heartSymbols = ['♥', '♡', '❤', '💕'];
+    
+    // Generate a heart every 800ms for continuous life
+    setInterval(() => {
+        if(document.getElementById('scrapbook-section').style.display === 'block' || window.scrollY < window.innerHeight) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            
+            // Random dynamic sizing and positioning
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * (24 - 12) + 12 + 'px';
+            heart.style.animationDuration = Math.random() * (16 - 8) + 8 + 's';
+            
+            container.appendChild(heart);
+            
+            // Cleanup to maintain ultra-fast performance
+            setTimeout(() => {
+                heart.remove();
+            }, 16000);
+        }
+    }, 700);
+}
+
+createHeartParticles();
+</script>
+
+</body>
+</html>
